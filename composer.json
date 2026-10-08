@@ -1,0 +1,80 @@
+{
+    "name": "ruvelo/filament-wiki",
+    "description": "Your Laravel wiki inside Filament: pages, a Markdown editor with live preview, history with diffs and restore, a reader and a recent-changes widget.",
+    "keywords": [
+        "laravel",
+        "filament",
+        "filament-plugin",
+        "wiki",
+        "markdown",
+        "knowledge-base"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "homepage": "https://ruvelo.github.io/filament-wiki/",
+    "authors": [
+        {
+            "name": "François Bultez",
+            "homepage": "https://github.com/francoisbultez",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "filament/filament": "^4.0|^5.0",
+        "laravel/framework": "^12.4.1|^13.0",
+        "ruvelo/laravel-wiki": "^1.1"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.13",
+        "laravel/pint": "^1.32",
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.5|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ruvelo\\FilamentWiki\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ruvelo\\FilamentWiki\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ruvelo\\FilamentWiki\\FilamentWikiServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "pint --test",
+        "format": "pint",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@lint",
+            "@analyse",
+            "@test"
+        ],
+        "demo": "php demo/build.php build/site && cp -r art build/site/art && echo 'Serve it: php -S 127.0.0.1:8000 -t build, then open /site/'"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/Ruvelo/filament-wiki/issues",
+        "source": "https://github.com/Ruvelo/filament-wiki"
+    },
+    "scripts-descriptions": {
+        "test": "Run the test suite",
+        "lint": "Check code style",
+        "format": "Fix code style",
+        "analyse": "Run static analysis",
+        "check": "Lint, analyse and test: what CI runs",
+        "demo": "Build the demo gallery into build/"
+    }
+}
