@@ -108,6 +108,9 @@ class PluginTest extends TestCase
         $this->assertFalse(PageResource::canForceDelete($page));
         $this->assertFalse(PageResource::canReplicate($page));
         $this->assertFalse(PageResource::canReorder());
+
+        $this->plugin()->reader(false);
+        $this->assertFalse(PageResource::canView($page));
     }
 
     public function test_widgets_can_be_left_off(): void

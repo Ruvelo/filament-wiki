@@ -16,7 +16,9 @@ use Ruvelo\Wiki\Models\Revision;
  */
 class RecentChanges extends TableWidget
 {
-    protected static ?int $sort = 20;
+    protected static ?int $sort = 21;
+
+    protected int|string|array $columnSpan = 'full';
 
     public int $limit = 8;
 

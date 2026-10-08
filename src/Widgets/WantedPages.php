@@ -17,9 +17,9 @@ use Ruvelo\FilamentWiki\Support\WantedPages as Wanted;
  */
 class WantedPages extends TableWidget
 {
-    protected static ?int $sort = 21;
+    protected static ?int $sort = 20;
 
-    public int $limit = 8;
+    public int $limit = 5;
 
     public static function canView(): bool
     {

@@ -66,6 +66,11 @@ class PageResource extends Resource
             : WikiPlugin::make()->getSlug();
     }
 
+    public static function getBreadcrumb(): string
+    {
+        return WikiPlugin::get()->getNavigationLabel();
+    }
+
     public static function getNavigationGroup(): string|UnitEnum|null
     {
         return WikiPlugin::get()->getNavigationGroup();
@@ -87,7 +92,8 @@ class PageResource extends Resource
     }
 
     /**
-     * Anyone who can use the panel can read the wiki; writing needs the
+     * Anyone who can use the panel can read the wiki (`view` is the reader
+     * page, so it follows reader()); writing needs the
      * plugin's canEdit() check (the `wiki-edit` gate by default). Model
      * policies for wiki pages are not consulted.
      */
@@ -100,7 +106,8 @@ class PageResource extends Resource
         };
 
         return match ($ability) {
-            'viewAny', 'view' => Response::allow(),
+            'viewAny' => Response::allow(),
+            'view' => WikiPlugin::get()->hasReader() ? Response::allow() : Response::deny('The reader is turned off.'),
             'create', 'update', 'delete', 'deleteAny' => WikiPlugin::get()->userCanEdit()
                 ? Response::allow()
                 : Response::deny('Only editors can change the wiki.'),

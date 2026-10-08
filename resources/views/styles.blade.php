@@ -6,6 +6,8 @@
     .fi-wiki-prose a.wiki-link--new { color: var(--danger-600); text-decoration-color: var(--danger-400); text-decoration-style: dashed; }
     .dark .fi-wiki-prose a.wiki-link--new { color: var(--danger-400); }
     .fi-wiki-prose .wiki-toc { list-style: none; padding-inline-start: 0; }
+    .fi-wiki-prose pre { overflow-x: auto; }
+    .fi-wiki-prose img { max-width: 100%; }
     .fi-wiki-empty, .fi-wiki-muted { color: var(--gray-500); font-style: italic; }
     .fi-wiki-preview .fi-section-content-ctn { max-height: 40rem; overflow-y: auto; }
 
@@ -21,7 +23,7 @@
     .dark .fi-wiki-changes-head { color: var(--gray-50); }
     .fi-wiki-add { color: var(--success-600); }
     .fi-wiki-del { color: var(--danger-600); }
-    .fi-wiki-diff { overflow: hidden; border: 1px solid var(--gray-200); border-radius: .5rem; font: .8125rem/1.6 var(--mono-font-family, ui-monospace, SFMono-Regular, Menlo, monospace); }
+    .fi-wiki-diff { overflow: hidden; border: 1px solid var(--gray-200); border-radius: .5rem; font: .8125rem/1.6 var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); }
     .fi-wiki-diff > div { min-height: 1.6em; padding: 0 .75rem; white-space: pre-wrap; overflow-wrap: anywhere; }
     .fi-wiki-diff-add { background: color-mix(in oklab, var(--success-500) 12%, transparent); color: var(--success-800); }
     .fi-wiki-diff-del { background: color-mix(in oklab, var(--danger-500) 12%, transparent); color: var(--danger-800); }

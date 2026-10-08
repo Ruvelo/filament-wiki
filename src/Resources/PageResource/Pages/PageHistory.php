@@ -42,7 +42,7 @@ class PageHistory extends ManageRelatedRecords
     {
         $record = $parameters['record'] ?? null;
 
-        return $record instanceof Model && PageResource::canView($record);
+        return $record instanceof Model && PageResource::canViewAny();
     }
 
     public function getTitle(): string

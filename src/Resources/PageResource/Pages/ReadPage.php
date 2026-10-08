@@ -47,14 +47,23 @@ class ReadPage extends ResourcePage
     {
         $record = $parameters['record'] ?? null;
 
-        return WikiPlugin::get()->hasReader()
-            && parent::canAccess($parameters)
-            && (! $record instanceof Model || PageResource::canView($record));
+        return parent::canAccess($parameters)
+            && ($record instanceof Model ? PageResource::canView($record) : WikiPlugin::get()->hasReader());
     }
 
     public function getTitle(): string
     {
         return $this->page()->title;
+    }
+
+    /**
+     * The handbook, then the page: no "Read" crumb after it.
+     *
+     * @return array<string>
+     */
+    public function getBreadcrumbs(): array
+    {
+        return [...$this->getResourceBreadcrumbs(), $this->getTitle()];
     }
 
     public function getSubheading(): string
