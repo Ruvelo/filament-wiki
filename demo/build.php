@@ -86,6 +86,7 @@ $html = <<<HTML
         nav.links { display: flex; gap: 1.25rem; font-size: .9375rem; }
         nav.links a { color: var(--fw-text-2); text-decoration: none; }
         nav.links a:hover { color: var(--fw-accent); }
+        @media (max-width: 40rem) { .brand span { display: none; } nav.links { gap: .9rem; font-size: .875rem; } nav.links a { white-space: nowrap; } }
         .hero { position: relative; padding: 4rem 0 3rem; }
         .hero::before { content: ""; position: absolute; inset: 0 -50vw; z-index: -1; background-image: linear-gradient(var(--fw-line) 1px, transparent 1px), linear-gradient(90deg, var(--fw-line) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, rgb(0 0 0 / .5), transparent 70%); }
         h1 { font-size: clamp(2.4rem, 6vw, 4.25rem); line-height: 1.02; font-weight: 600; letter-spacing: -.045em; margin: 0 0 1.25rem; max-width: 16ch; }

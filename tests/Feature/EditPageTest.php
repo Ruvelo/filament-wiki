@@ -218,6 +218,19 @@ class EditPageTest extends TestCase
         $this->get(PageResource::getUrl('view', ['record' => $page]))->assertOk();
     }
 
+    public function test_pages_from_the_wiki_factory_can_be_edited(): void
+    {
+        $page = Page::factory()->titled('Deploy guide')->create();
+
+        Livewire::actingAs($this->user())
+            ->test(EditPage::class, ['record' => $page->slug])
+            ->fillForm(['body' => 'New text', 'summary' => 'Rewrite'])
+            ->call('save')
+            ->assertNotified('Page saved');
+
+        $this->assertSame(2, $page->revisions()->count());
+    }
+
     public function test_a_missing_page_is_a_404(): void
     {
         $this->signIn();

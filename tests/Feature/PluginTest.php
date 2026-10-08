@@ -8,6 +8,7 @@ use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Ruvelo\FilamentWiki\Resources\PageResource;
 use Ruvelo\FilamentWiki\Tests\TestCase;
@@ -143,6 +144,14 @@ class PluginTest extends TestCase
         $this->signIn();
 
         $this->get(PageResource::getUrl('index'))->assertSee('.fi-wiki-diff', escape: false);
+    }
+
+    public function test_the_boost_guidelines_render(): void
+    {
+        $guidelines = Blade::render((string) file_get_contents(__DIR__.'/../../resources/boost/guidelines/core.blade.php'));
+
+        $this->assertStringContainsString('## ruvelo/filament-wiki', $guidelines);
+        $this->assertStringContainsString('WikiPlugin::make()', $guidelines);
     }
 
     public function test_get_falls_back_to_defaults_outside_a_panel_with_the_plugin(): void
