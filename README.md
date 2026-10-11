@@ -251,7 +251,7 @@ The screenshots come from a real panel: `demo/screenshots.sh` seeds a Halyard ad
 
 ## Credits
 
-Built by [François Bultez](https://github.com/francoisbultez) at [Ruvelo](https://github.com/Ruvelo), and everyone who contributes.
+Built by [François Bultez](https://github.com/francoisbultez) at [Valtry](https://valtry.co.uk/?utm_source=ruvelo&utm_medium=github&utm_campaign=filament-wiki), the website security scanner, and everyone who contributes.
 
 ## License
 
